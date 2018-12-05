@@ -1,8 +1,10 @@
 // demo for displaying bitmaps on an 320 x 240 tft lcd screen with Arduino
 
-//#include <Wire.h>
+#include <Wire.h>
 #include "Adafruit_GFX.h"
 #include "Adafruit_ILI9341.h"
+#include "ArduinoNunchuk/ArduinoNunchuk.h" // library for nunchuk
+
 
 // define SPI pins
 #define TFT_DC 9    // DC pin
@@ -23,20 +25,30 @@
 // define background color (black)
 #define BACKGROUND BLACK
 
+// define screensize
+#define SCREEN_WIDTH 240 //the screenwidth is 240 pixels
+#define SCREEN_HEIGHT 320 // the screenheight is 320 pixels
+
+
 const int16_t width = 45;     // set width of image, image cannot be wider than the screenwidth (240)
 const int16_t height = 66;   // set height of image, image cannot be wider than the screenheight (320)
 
 // start SPI communication with the display shield
 Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC);
 
+// constructor for a ArduinoNunchuk object
+ArduinoNunchuk myNunchuck;
+
 // this is the name of the image which is included in the graphics.c file
-extern uint8_t playerFrontArray[];
-extern uint8_t playerLeftArray[];
-extern uint8_t playerRightArray[];
 extern uint8_t bombArray[];
-extern uint8_t playerBackArray[];
 extern uint8_t frameArray[];
 extern uint8_t blockArray[];
+extern uint8_t spookBodyArray[];
+extern uint8_t ogenBovenArray[];
+extern uint8_t ogenLinksArray[];
+extern uint8_t ogenOnderArray[];
+extern uint8_t ogenRechtsArray[];
+extern uint8_t oogwitArray[];
 
 
 // this is an array in which the colornames are stored
@@ -57,26 +69,54 @@ uint16_t coordinates[73][2] = {
 };
 
 
+int x; // x coordinate
+int y; // y coordinate
+int xold; // x coordinate of the previous position
+int yold; // y coordinate of the previous position
+int analogXOld; // old x value of the nunchuck
+int analogYOld; // old y value of the nunchuck
+
+int startX1 = 22;
+int startY1 = 31;
+int startX2;
+int startY2;
+
+int curX1 = startX1;
+int curY1 = startY1;
+
+
+
 int16_t main (void){
 	init();
+	myNunchuck.init();
 	tft.begin();
 	tft.setRotation(1);
 	
+	Serial.begin(9600);
+	
+	redrawScreen();
+	frame(0, 0);
+	drawSpookPlayer(startX1, startY1);
+	
 	while(1){
-		redrawScreen();
-		frame(0, 0);
-		
-		//playerFront(60, 100);
-		//playerLeft(110, 100);
-		//playerRight(160, 100);
-		//playerBack(210, 100);
-		//bomb(260, 100);
-		//walkingPoppetjes();
-		
+				
+		walkWithNunchuk();
+						
+		/*
 		drawRandomLevel();
+		*/
 		
+				
 		
-		delay(10000);
+		/*
+		for(int i=43; i<=199; i+=4){
+			drawSpookPlayer(22, i);
+			delay(100);
+			undrawSpookPlayer(22, i);
+		}
+		*/	
+		
+		//delay(2000);
 		
 	}
 	
@@ -115,6 +155,7 @@ void redrawScreen(){
 	//tft.drawRect(0,0,319,240,WHITE);  // draw a white frame
 }
 
+/*
 //function that lets poppetjes walk down from the left side of the screen
 void playerFront(int16_t x, int16_t y){
 	drawBitmap(x, y, playerFrontArray, 13, 20, RED);
@@ -135,6 +176,7 @@ void playerBack(int16_t x, int16_t y){
 	drawBitmap(x, y, playerBackArray, 13, 20, BLUE);
 	
 }
+*/
 
 void bomb(int16_t x, int16_t y){
 	drawBitmap(x, y, bombArray, 38, 31, BLACK);
@@ -181,58 +223,91 @@ bool alreadyExistsInArray(int val, int *arr){
 	return false;
 }
 
-//void walkRight(int16_t x, int16_t, y) {
-//	drawBitmap(x, y, frameArray, 272, 240, BLACK);
-//}
 
-// function to draw the image in random places and colors, takes the amount of images to be drawn as only parameter
-// void randomPoppetje(int amountOfPoppetjes){
-// 	int x, y, c;
-// 	uint16_t randomColor;
-// 	for (int i=0; i<amountOfPoppetjes; i++){
-// 		x = random(320);  // get a random x coordinate
-// 		y = random(240);  // get a random y coordinate
-// 		c = random(1, 9);    // get a random number, this is to get a random color from the colorArray
-// 		randomColor = colorArray[c];
-// 		drawBitmap(x, y, poppetje, width, height, randomColor);
-// 		delay(0);
-// 	}
-// }
 
-//function that lets two poppetjes walk in opposite direction from the right and left side of the screen
-void walkingPoppetjes(){
-	for(int i=10; i<250; i=i+20){
-		drawBitmap(i, 30, playerRightArray, width, height, RED);
-		drawBitmap(250-i, 170, playerLeftArray, width, height, BLUE);
-		delay(400);
-		undrawBitmap(i, 30, playerRightArray, width, height, BACKGROUND);
-		undrawBitmap(250-i, 170, playerLeftArray, width, height, BACKGROUND);
-	}
+
+// new functions for walking and stuff
+void drawSpookPlayer(int16_t x, int16_t y){
+	drawBitmap(x, y, spookBodyArray, 19, 19, RED);
+	drawBitmap(x, y, oogwitArray, 19, 19, WHITE);
+	drawBitmap(x, y, ogenOnderArray, 19, 19, BLUE);
 }
 
-// function that lets poppetjes walk down from the left side of the screen
-// void walkingDownPoppetjes(){
-// 	drawBitmap(10, 40, poppetje, width, height, WHITE);
-// 	delay(1000);
-// 	drawBitmap(60, 70, poppetje, width, height, WHITE);
-// 	delay(1000);
-// 	drawBitmap(110, 100, poppetje, width, height, WHITE);
-// 	delay(1000);
-// 	drawBitmap(160, 120, poppetje, width, height, WHITE);
-// 	delay(1000);
-// 	drawBitmap(210, 150, poppetje, width, height, WHITE);
-// 	delay(1000);
-//
-// 	undrawBitmap(10, 40, poppetje, width, height, BACKGROUND);
-// 	delay(1000);
-// 	undrawBitmap(60, 70, poppetje, width, height, BACKGROUND);
-// 	delay(1000);
-// 	undrawBitmap(110, 100, poppetje, width, height, BACKGROUND);
-// 	delay(1000);
-// 	undrawBitmap(160, 120, poppetje, width, height, BACKGROUND);
-// 	delay(1000);
-// 	undrawBitmap(210, 150, poppetje, width, height, BACKGROUND);
-// 	delay(1000);
-// }
+void undrawSpookPlayer(int16_t x, int16_t y){
+	undrawBitmap(x, y, spookBodyArray, 19, 19, BACKGROUND);
+	undrawBitmap(x, y, oogwitArray, 19, 19, BACKGROUND);
+	undrawBitmap(x, y, ogenOnderArray, 19, 19, BACKGROUND);
+}
+
+void moveRight(){
+	int newX1 = curX1 + 21;
+	//int newY1 = curY1 + 21;
+	undrawSpookPlayer(curX1, curY1);
+	drawSpookPlayer(newX1, curY1);
+	curX1 = newX1;
+	//curY1 = newY1;
+}
+
+void moveLeft(){
+	int newX1 = curX1 - 21;
+	undrawSpookPlayer(curX1, curY1);
+	drawSpookPlayer(newX1, curY1);
+	curX1 = newX1;
+}
+
+void moveUp(){
+	int newY1 = curY1 - 21;
+	undrawSpookPlayer(curX1, curY1);
+	drawSpookPlayer(curX1, newY1);
+	curY1 = newY1;
+}
+
+void moveDown(){
+	int newY1 = curY1 + 21;
+	undrawSpookPlayer(curX1, curY1);
+	drawSpookPlayer(curX1, newY1);
+	curY1 = newY1;
+}
 
 
+void walkWithNunchuk(){
+	myNunchuck.update(); // update the nunchuck data
+	
+	if (analogXOld != myNunchuck.analogX || analogYOld != myNunchuck.analogY) { // if either the x or y coordinate has changed, we have to redraw the spookje
+		analogXOld = myNunchuck.analogX; // update X value
+		analogYOld = myNunchuck.analogY; // update Y value
+		if (myNunchuck.analogX>200){
+			Serial.println(myNunchuck.analogX);
+			moveRight();
+			}else if (myNunchuck.analogX<40){
+			Serial.println(myNunchuck.analogX);
+			moveLeft();
+			}else if (myNunchuck.analogY>200){
+			Serial.println(myNunchuck.analogY);
+			moveUp();
+			}else if (myNunchuck.analogY<40){
+			Serial.println(myNunchuck.analogY);
+			moveDown();
+		}
+	}
+	
+}
+
+
+void testNunchuk(){
+	myNunchuck.update();
+
+	Serial.print(myNunchuck.analogX, DEC);
+	Serial.print(' ');
+	Serial.print(myNunchuck.analogY, DEC);
+	Serial.print(' ');
+	Serial.print(myNunchuck.accelX, DEC);
+	Serial.print(' ');
+	Serial.print(myNunchuck.accelY, DEC);
+	Serial.print(' ');
+	Serial.print(myNunchuck.accelZ, DEC);
+	Serial.print(' ');
+	Serial.print(myNunchuck.zButton, DEC);
+	Serial.print(' ');
+	Serial.println(myNunchuck.cButton, DEC);
+}

@@ -22,16 +22,19 @@ int16_t main (void);
 void drawBitmap(int16_t x, int16_t y, const uint8_t *bitmap, int16_t w, int16_t h, uint16_t color);
 void undrawBitmap(int16_t x, int16_t y, const uint8_t *bitmap, int16_t w, int16_t h, uint16_t backgroundColor);
 void redrawScreen();
-void playerFront(int16_t x, int16_t y);
-void playerLeft(int16_t x, int16_t y);
-void playerRight(int16_t x, int16_t y);
-void playerBack(int16_t x, int16_t y);
 void bomb(int16_t x, int16_t y);
 void frame(int16_t x, int16_t y);
 void block(int16_t x, int16_t y);
 void drawRandomLevel();
 bool alreadyExistsInArray(int val, int *arr);
-void walkingPoppetjes();
+void drawSpookPlayer(int16_t x, int16_t y);
+void undrawSpookPlayer(int16_t x, int16_t y);
+void moveRight();
+void moveLeft();
+void moveUp();
+void moveDown();
+void walkWithNunchuk();
+void testNunchuk();
 
 #include "pins_arduino.h" 
 #include "arduino.h"

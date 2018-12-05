@@ -70,6 +70,9 @@
       <Value>C:/Users/jeroe/Documents/Arduino/libraries/Adafruit_GFX_Library</Value>
       <Value>C:/Users/jeroe/Documents/Arduino/libraries/Adafruit_ILI9341</Value>
       <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/SPI/src</Value>
+      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src</Value>
+      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src/utility</Value>
+      <Value>C:/Users/jeroe/Documents/Arduino/libraries/ArduinoNunchuk</Value>
       <Value>D:/Program Files/Arduino/libraries</Value>
       <Value>C:/Users/jeroe/Documents/Arduino/libraries</Value>
       <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries</Value>
@@ -107,6 +110,9 @@
       <Value>C:/Users/jeroe/Documents/Arduino/libraries/Adafruit_GFX_Library</Value>
       <Value>C:/Users/jeroe/Documents/Arduino/libraries/Adafruit_ILI9341</Value>
       <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/SPI/src</Value>
+      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src</Value>
+      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src/utility</Value>
+      <Value>C:/Users/jeroe/Documents/Arduino/libraries/ArduinoNunchuk</Value>
       <Value>D:/Program Files/Arduino/libraries</Value>
       <Value>C:/Users/jeroe/Documents/Arduino/libraries</Value>
       <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries</Value>
@@ -127,7 +133,7 @@
   <avrgcccpp.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcccpp.assembler.debugging.DebugLevel>
 </AvrGccCpp>
     </ToolchainSettings>
-    <VMSETTING_IncludePaths>../../../arduinoGameLevelTest1;D:/Program Files/Arduino/libraries;C:/Users/jeroe/Documents/Arduino/libraries;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/cores/arduino;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/variants/standard;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include/avr;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.8.1/include;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.2/include;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.3/include;C:/Users/jeroe/Documents/Arduino/libraries/Adafruit_ILI9341;C:/Users/jeroe/Documents/Arduino/libraries/Adafruit_GFX_Library;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/SPI/src;</VMSETTING_IncludePaths>
+    <VMSETTING_IncludePaths>../../../arduinoGameLevelTest1;D:/Program Files/Arduino/libraries;C:/Users/jeroe/Documents/Arduino/libraries;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/cores/arduino;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/variants/standard;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include/avr;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.8.1/include;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.2/include;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.3/include;C:/Users/jeroe/Documents/Arduino/libraries/Adafruit_ILI9341;C:/Users/jeroe/Documents/Arduino/libraries/Adafruit_GFX_Library;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/SPI/src;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src/utility;C:/Users/jeroe/Documents/Arduino/libraries/ArduinoNunchuk;</VMSETTING_IncludePaths>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <ToolchainSettings>
@@ -157,6 +163,9 @@
       <Value>C:/Users/jeroe/Documents/Arduino/libraries/Adafruit_GFX_Library</Value>
       <Value>C:/Users/jeroe/Documents/Arduino/libraries/Adafruit_ILI9341</Value>
       <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/SPI/src</Value>
+      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src</Value>
+      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src/utility</Value>
+      <Value>C:/Users/jeroe/Documents/Arduino/libraries/ArduinoNunchuk</Value>
       <Value>D:/Program Files/Arduino/libraries</Value>
       <Value>C:/Users/jeroe/Documents/Arduino/libraries</Value>
       <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries</Value>
@@ -194,6 +203,9 @@
       <Value>C:/Users/jeroe/Documents/Arduino/libraries/Adafruit_GFX_Library</Value>
       <Value>C:/Users/jeroe/Documents/Arduino/libraries/Adafruit_ILI9341</Value>
       <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/SPI/src</Value>
+      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src</Value>
+      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src/utility</Value>
+      <Value>C:/Users/jeroe/Documents/Arduino/libraries/ArduinoNunchuk</Value>
       <Value>D:/Program Files/Arduino/libraries</Value>
       <Value>C:/Users/jeroe/Documents/Arduino/libraries</Value>
       <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries</Value>
@@ -214,7 +226,7 @@
   <avrgcccpp.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcccpp.assembler.debugging.DebugLevel>
 </AvrGccCpp>
     </ToolchainSettings>
-    <VMSETTING_IncludePaths>../../../arduinoGameLevelTest1;D:/Program Files/Arduino/libraries;C:/Users/jeroe/Documents/Arduino/libraries;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/cores/arduino;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/variants/standard;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include/avr;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.8.1/include;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.2/include;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.3/include;C:/Users/jeroe/Documents/Arduino/libraries/Adafruit_ILI9341;C:/Users/jeroe/Documents/Arduino/libraries/Adafruit_GFX_Library;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/SPI/src;</VMSETTING_IncludePaths>
+    <VMSETTING_IncludePaths>../../../arduinoGameLevelTest1;D:/Program Files/Arduino/libraries;C:/Users/jeroe/Documents/Arduino/libraries;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/cores/arduino;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/variants/standard;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include/avr;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.8.1/include;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.2/include;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.3/include;C:/Users/jeroe/Documents/Arduino/libraries/Adafruit_ILI9341;C:/Users/jeroe/Documents/Arduino/libraries/Adafruit_GFX_Library;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/SPI/src;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src/utility;C:/Users/jeroe/Documents/Arduino/libraries/ArduinoNunchuk;</VMSETTING_IncludePaths>
   </PropertyGroup>
   <ItemGroup>
     <None Include="arduinoGameLevelTest1.ino">
