@@ -42,7 +42,7 @@ extern uint8_t blockArray[];
 // this is an array in which the colornames are stored
 uint16_t colorArray[] = {BLACK, BLUE, RED, GREEN, CYAN, MAGENTA, YELLOW, WHITE, GREY};
 
-uint16_t coordinates[73][2] = { 
+uint16_t coordinates[73][2] = {
 	{22,73}, {22,94}, {22,115}, {22,136}, {22,157}, {22,178}, {22,199},
 	{43,73}, {43,115}, {43,157}, {43,199},
 	{64,31}, {64,52}, {64,73}, {64,94}, {64,115}, {64,136}, {64,157}, {64,178}, {64,199},
@@ -65,7 +65,7 @@ int16_t main (void){
 	while(1){
 		redrawScreen();
 		frame(0, 0);
-				
+		
 		//playerFront(60, 100);
 		//playerLeft(110, 100);
 		//playerRight(160, 100);
@@ -75,7 +75,7 @@ int16_t main (void){
 		
 		drawRandomLevel();
 		
-				
+		
 		delay(10000);
 		
 	}
@@ -152,25 +152,25 @@ void block(int16_t x, int16_t y){
 }
 
 void drawRandomLevel(){
-	//	uint16_t alreadyPlaced[73];
-	for(int i = 0; i <= 72; i++){
-		//		uint16_t random = rand() % (73 + 1);
-		// 		if(alreadyExistsInArray(random, alreadyPlaced)) {
-		// 			i--;
-		// 		} else {
-		// 			alreadyPlaced[random] = random;
-		uint16_t x1 = coordinates[i][0];
-		uint16_t y1 = coordinates[i][1];
-		block(x1, y1);
-		
-		//  			if(i=25){
-		//  				for (int i=0; i <60; ++i)
-		//  				alreadyPlaced[i]=0;
-		// 			}
-		// }
-		
+	uint16_t alreadyPlaced[73];
+	for(int i = 0; i <= 50; i++){
+		uint16_t random = rand() % (73 + 1);
+		if(alreadyExistsInArray(random, alreadyPlaced)) {
+			i--;
+			} else {
+			alreadyPlaced[random] = random;
+			uint16_t x1 = coordinates[random][0];
+			uint16_t y1 = coordinates[random][1];
+			if(x1 >= 22 && y1 >= 31){
+				block(x1, y1);
+				
+			}
+		}
 	}
+	memset(alreadyPlaced,'0',sizeof(alreadyPlaced));
+	
 }
+
 
 bool alreadyExistsInArray(int val, int *arr){
 	int i;
