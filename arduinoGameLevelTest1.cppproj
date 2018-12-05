@@ -225,6 +225,9 @@
     <Folder Include="__vm\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="graphics.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="__vm\.arduinoGameLevelTest1.vsarduino.h">
       <SubType>compile</SubType>
     </Compile>
