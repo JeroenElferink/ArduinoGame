@@ -66,23 +66,23 @@
   </avrgcc.compiler.symbols.DefSymbols>
   <avrgcc.compiler.directories.IncludePaths>
     <ListValues>
-      <Value>../../../arduinoGameLevelTest1</Value>
-      <Value>C:/Users/jeroe/Documents/Arduino/libraries/Adafruit_GFX_Library</Value>
-      <Value>C:/Users/jeroe/Documents/Arduino/libraries/Adafruit_ILI9341</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/SPI/src</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src/utility</Value>
-      <Value>C:/Users/jeroe/Documents/Arduino/libraries/ArduinoNunchuk</Value>
-      <Value>D:/Program Files/Arduino/libraries</Value>
-      <Value>C:/Users/jeroe/Documents/Arduino/libraries</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/cores/arduino</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/variants/standard</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include/avr</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.8.1/include</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.2/include</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.3/include</Value>
+      <Value>../../../arduinoGame</Value>
+      <Value>C:/Users/niekd/Documents/Arduino/libraries/ArduinoNunchuk</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire/src</Value>
+      <Value>C:/Users/niekd/Documents/Arduino/libraries/Adafruit-GFX-Library-master</Value>
+      <Value>C:/Users/niekd/Documents/Arduino/libraries/Adafruit_ILI9341-master</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI/src</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire/src/utility</Value>
+      <Value>C:/Program Files (x86)/Arduino/libraries</Value>
+      <Value>C:/Users/niekd/Documents/Arduino/libraries</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/standard</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include/avr</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.8.1/include</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.9.2/include</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.9.3/include</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
@@ -106,23 +106,23 @@
   </avrgcccpp.compiler.symbols.DefSymbols>
   <avrgcccpp.compiler.directories.IncludePaths>
     <ListValues>
-      <Value>../../../arduinoGameLevelTest1</Value>
-      <Value>C:/Users/jeroe/Documents/Arduino/libraries/Adafruit_GFX_Library</Value>
-      <Value>C:/Users/jeroe/Documents/Arduino/libraries/Adafruit_ILI9341</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/SPI/src</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src/utility</Value>
-      <Value>C:/Users/jeroe/Documents/Arduino/libraries/ArduinoNunchuk</Value>
-      <Value>D:/Program Files/Arduino/libraries</Value>
-      <Value>C:/Users/jeroe/Documents/Arduino/libraries</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/cores/arduino</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/variants/standard</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include/avr</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.8.1/include</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.2/include</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.3/include</Value>
+      <Value>../../../arduinoGame</Value>
+      <Value>C:/Users/niekd/Documents/Arduino/libraries/ArduinoNunchuk</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire/src</Value>
+      <Value>C:/Users/niekd/Documents/Arduino/libraries/Adafruit-GFX-Library-master</Value>
+      <Value>C:/Users/niekd/Documents/Arduino/libraries/Adafruit_ILI9341-master</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI/src</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire/src/utility</Value>
+      <Value>C:/Program Files (x86)/Arduino/libraries</Value>
+      <Value>C:/Users/niekd/Documents/Arduino/libraries</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/standard</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include/avr</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.8.1/include</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.9.2/include</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.9.3/include</Value>
     </ListValues>
   </avrgcccpp.compiler.directories.IncludePaths>
   <avrgcccpp.compiler.optimization.level>Optimize (-O1)</avrgcccpp.compiler.optimization.level>
@@ -133,7 +133,7 @@
   <avrgcccpp.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcccpp.assembler.debugging.DebugLevel>
 </AvrGccCpp>
     </ToolchainSettings>
-    <VMSETTING_IncludePaths>../../../arduinoGameLevelTest1;D:/Program Files/Arduino/libraries;C:/Users/jeroe/Documents/Arduino/libraries;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/cores/arduino;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/variants/standard;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include/avr;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.8.1/include;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.2/include;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.3/include;C:/Users/jeroe/Documents/Arduino/libraries/Adafruit_ILI9341;C:/Users/jeroe/Documents/Arduino/libraries/Adafruit_GFX_Library;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/SPI/src;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src/utility;C:/Users/jeroe/Documents/Arduino/libraries/ArduinoNunchuk;</VMSETTING_IncludePaths>
+    <VMSETTING_IncludePaths>../../../arduinoGameLevelTest1;D:/Program Files/Arduino/libraries;C:/Users/jeroe/Documents/Arduino/libraries;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/cores/arduino;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/variants/standard;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include/avr;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.8.1/include;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.2/include;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.3/include;C:/Users/jeroe/Documents/Arduino/libraries/Adafruit_ILI9341;C:/Users/jeroe/Documents/Arduino/libraries/Adafruit_GFX_Library;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/SPI/src;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src/utility;C:/Users/jeroe/Documents/Arduino/libraries/ArduinoNunchuk;../../../ArduinoGame;C:/Users/niekd/Documents/Arduino/libraries/Adafruit-GFX-Library-master;C:/Users/niekd/Documents/Arduino/libraries/Adafruit_ILI9341-master;C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI/src;C:/Users/niekd/Documents/Arduino/libraries/ArduinoNunchuk;C:/Program Files (x86)/Arduino/libraries;C:/Users/niekd/Documents/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino;C:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/standard;C:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include;C:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include/avr;C:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.8.1/include;C:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.9.2/include;C:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.9.3/include;C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire/src;C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire/src/utility;../../../arduinoGame;</VMSETTING_IncludePaths>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <ToolchainSettings>
@@ -159,23 +159,23 @@
   </avrgcc.compiler.symbols.DefSymbols>
   <avrgcc.compiler.directories.IncludePaths>
     <ListValues>
-      <Value>../../../arduinoGameLevelTest1</Value>
-      <Value>C:/Users/jeroe/Documents/Arduino/libraries/Adafruit_GFX_Library</Value>
-      <Value>C:/Users/jeroe/Documents/Arduino/libraries/Adafruit_ILI9341</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/SPI/src</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src/utility</Value>
-      <Value>C:/Users/jeroe/Documents/Arduino/libraries/ArduinoNunchuk</Value>
-      <Value>D:/Program Files/Arduino/libraries</Value>
-      <Value>C:/Users/jeroe/Documents/Arduino/libraries</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/cores/arduino</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/variants/standard</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include/avr</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.8.1/include</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.2/include</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.3/include</Value>
+      <Value>../../../arduinoGame</Value>
+      <Value>C:/Users/niekd/Documents/Arduino/libraries/ArduinoNunchuk</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire/src</Value>
+      <Value>C:/Users/niekd/Documents/Arduino/libraries/Adafruit-GFX-Library-master</Value>
+      <Value>C:/Users/niekd/Documents/Arduino/libraries/Adafruit_ILI9341-master</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI/src</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire/src/utility</Value>
+      <Value>C:/Program Files (x86)/Arduino/libraries</Value>
+      <Value>C:/Users/niekd/Documents/Arduino/libraries</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/standard</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include/avr</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.8.1/include</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.9.2/include</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.9.3/include</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
@@ -199,23 +199,23 @@
   </avrgcccpp.compiler.symbols.DefSymbols>
   <avrgcccpp.compiler.directories.IncludePaths>
     <ListValues>
-      <Value>../../../arduinoGameLevelTest1</Value>
-      <Value>C:/Users/jeroe/Documents/Arduino/libraries/Adafruit_GFX_Library</Value>
-      <Value>C:/Users/jeroe/Documents/Arduino/libraries/Adafruit_ILI9341</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/SPI/src</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src/utility</Value>
-      <Value>C:/Users/jeroe/Documents/Arduino/libraries/ArduinoNunchuk</Value>
-      <Value>D:/Program Files/Arduino/libraries</Value>
-      <Value>C:/Users/jeroe/Documents/Arduino/libraries</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/cores/arduino</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/variants/standard</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include/avr</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.8.1/include</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.2/include</Value>
-      <Value>C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.3/include</Value>
+      <Value>../../../arduinoGame</Value>
+      <Value>C:/Users/niekd/Documents/Arduino/libraries/ArduinoNunchuk</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire/src</Value>
+      <Value>C:/Users/niekd/Documents/Arduino/libraries/Adafruit-GFX-Library-master</Value>
+      <Value>C:/Users/niekd/Documents/Arduino/libraries/Adafruit_ILI9341-master</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI/src</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire/src/utility</Value>
+      <Value>C:/Program Files (x86)/Arduino/libraries</Value>
+      <Value>C:/Users/niekd/Documents/Arduino/libraries</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/standard</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include/avr</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.8.1/include</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.9.2/include</Value>
+      <Value>C:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.9.3/include</Value>
     </ListValues>
   </avrgcccpp.compiler.directories.IncludePaths>
   <avrgcccpp.compiler.optimization.level>Optimize (-O1)</avrgcccpp.compiler.optimization.level>
@@ -226,7 +226,7 @@
   <avrgcccpp.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcccpp.assembler.debugging.DebugLevel>
 </AvrGccCpp>
     </ToolchainSettings>
-    <VMSETTING_IncludePaths>../../../arduinoGameLevelTest1;D:/Program Files/Arduino/libraries;C:/Users/jeroe/Documents/Arduino/libraries;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/cores/arduino;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/variants/standard;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include/avr;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.8.1/include;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.2/include;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.3/include;C:/Users/jeroe/Documents/Arduino/libraries/Adafruit_ILI9341;C:/Users/jeroe/Documents/Arduino/libraries/Adafruit_GFX_Library;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/SPI/src;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src/utility;C:/Users/jeroe/Documents/Arduino/libraries/ArduinoNunchuk;</VMSETTING_IncludePaths>
+    <VMSETTING_IncludePaths>../../../arduinoGameLevelTest1;D:/Program Files/Arduino/libraries;C:/Users/jeroe/Documents/Arduino/libraries;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/cores/arduino;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/variants/standard;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/avr/include/avr;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.8.1/include;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.2/include;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/tools/avr-gcc/4.9.2-atmel3.5.4-arduino2/lib/gcc/avr/4.9.3/include;C:/Users/jeroe/Documents/Arduino/libraries/Adafruit_ILI9341;C:/Users/jeroe/Documents/Arduino/libraries/Adafruit_GFX_Library;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/SPI/src;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src;C:/Users/jeroe/AppData/Local/arduino15/packages/arduino/hardware/avr/1.6.21/libraries/Wire/src/utility;C:/Users/jeroe/Documents/Arduino/libraries/ArduinoNunchuk;../../../ArduinoGame;C:/Users/niekd/Documents/Arduino/libraries/Adafruit-GFX-Library-master;C:/Users/niekd/Documents/Arduino/libraries/Adafruit_ILI9341-master;C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI/src;C:/Users/niekd/Documents/Arduino/libraries/ArduinoNunchuk;C:/Program Files (x86)/Arduino/libraries;C:/Users/niekd/Documents/Arduino/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries;C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino;C:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/standard;C:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include;C:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include/avr;C:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.8.1/include;C:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.9.2/include;C:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.9.3/include;C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire/src;C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire/src/utility;../../../arduinoGame;</VMSETTING_IncludePaths>
   </PropertyGroup>
   <ItemGroup>
     <None Include="arduinoGameLevelTest1.ino">
@@ -238,6 +238,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="graphics.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="__vm\.ArduinoGame.vsarduino.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="__vm\.arduinoGameLevelTest1.vsarduino.h">

@@ -53,7 +53,7 @@ extern uint8_t oogwitArray[];
 // this is an array in which the colornames are stored
 uint16_t colorArray[] = {BLACK, BLUE, RED, GREEN, CYAN, MAGENTA, YELLOW, WHITE, GREY};
 
-uint16_t placed[51];
+uint16_t placed[50];
 
 uint16_t coordinates[73][2] = {
   {22,73}, {22,94}, {22,115}, {22,136}, {22,157}, {22,178}, {22,199},
@@ -95,6 +95,8 @@ int newY1 = 0;
 
 int change = 0;
 
+int numberOfBlocks = 50; // Number of blocks getting printed 
+
 int16_t main (void){
   init();
   myNunchuck.init();
@@ -106,14 +108,14 @@ int16_t main (void){
   redrawScreen();
   frame(0, 0);
     
-  //drawRandomLevel();
+  drawRandomLevel();
   //newDrawRandomLevel();
   
   drawSpookPlayer(startX1, startY1);
   //block(22,73);
-  
+  printPlacedBlocks();
   while(1){
-        
+	
     walkWithNunchuk();
 
     /*                                  
@@ -183,7 +185,7 @@ void block(int16_t x, int16_t y){
 void drawRandomLevel(){
   uint16_t alreadyPlaced[73];
   srand(analogRead(A0));
-  for(int i = 0; i <= 50; i++){
+  for(int i = 0; i <= numberOfBlocks; i++){
     uint16_t random = rand() % (73 + 1);
     if(alreadyExistsInArray(random, alreadyPlaced)) {
       i--;
@@ -192,8 +194,8 @@ void drawRandomLevel(){
       alreadyPlaced[random] = random;
       uint16_t x1 = coordinates[random][0];
       uint16_t y1 = coordinates[random][1];
-      if(x1 >= 22 && y1 >= 31){
-        block(x1, y1);        
+      if(random != 73){
+	      block(x1, y1);
       }
     }
   }
@@ -313,7 +315,7 @@ int borderCheckX(){
 
 
 int blockCheck(){
-  for (int i=0; i<50; i++){
+  for (int i=0; i<numberOfBlocks; i++){
     int x = placed[i];
     int y = placed[i];
     if(newX1 == coordinates[x][0] && newY1 == coordinates[y][1]){
@@ -377,25 +379,25 @@ void newDrawRandomLevel(){
 void walkWithNunchuk(){
   myNunchuck.update(); // update the nunchuck data
   
-  if ((analogXOld != myNunchuck.analogX || analogYOld != myNunchuck.analogY) && change == 1) { // if either the x or y coordinate has changed, we have to redraw the spookje
+  if ((analogXOld != myNunchuck.analogX || analogYOld != myNunchuck.analogY) && change == 0) { // if either the x or y coordinate has changed, we have to redraw the spookje
     analogXOld = myNunchuck.analogX; // update X value
     analogYOld = myNunchuck.analogY; // update Y value              
     if (myNunchuck.analogX>200){      
       moveRight();
-      change = 0;
+      change = 1;
     }else if (myNunchuck.analogX<40){     
       moveLeft();
-      change = 0;
+      change = 1;
     }else if (myNunchuck.analogY>200){      
       moveUp();
-      change = 0;
+      change = 1;
     }else if (myNunchuck.analogY<40){     
       moveDown();
-      change = 0;
+      change = 1;
     }           
   }
-  if (myNunchuck.analogX<200 && myNunchuck.analogX>40 || myNunchuck.analogY<200 && myNunchuck.analogY>40){    
-    change = 1;   
+  if (myNunchuck.analogX>100 && myNunchuck.analogX<140 && myNunchuck.analogY>110 && myNunchuck.analogY<150){    
+    change = 0;   
   }
   
   
