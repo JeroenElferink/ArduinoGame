@@ -21,6 +21,7 @@
 #define WHITE   0xFFFF
 #define GREY    0xD6BA
 #define BROWN   0xB222
+#define ORANGE  0xFD6A
 
 // define background color (black)
 #define BACKGROUND BLACK
@@ -49,6 +50,9 @@ extern uint8_t ogenLinksArray[];
 extern uint8_t ogenOnderArray[];
 extern uint8_t ogenRechtsArray[];
 extern uint8_t oogwitArray[];
+extern uint8_t bombBorderArray[];
+extern uint8_t bombFillArray[];
+extern uint8_t bombFuseArray[];
 
 // this is an array in which the colornames are stored
 uint16_t colorArray[] = {BLACK, BLUE, RED, GREEN, CYAN, MAGENTA, YELLOW, WHITE, GREY};
@@ -93,7 +97,12 @@ int curY1 = startY1;
 int newX1 = 0;
 int newY1 = 0;
 
+int bombX1 = 0;
+int bombY1 = 0;
+
 int change = 0;
+int changeBomb = 0;
+int BombPlaced = 0;
 
 int numberOfBlocks = 50; // Number of blocks getting printed 
 
@@ -109,15 +118,15 @@ int16_t main (void){
   frame(0, 0);
     
   drawRandomLevel();
-  //newDrawRandomLevel();
   
   drawSpookPlayer(startX1, startY1);
-  //block(22,73);
+  
   printPlacedBlocks();
+  
   while(1){
 	
     walkWithNunchuk();
-
+	drawBomb();
     /*                                  
     redrawScreen();
     frame(0, 0);
@@ -167,9 +176,35 @@ void redrawScreen(){
 }
 
 
-void bomb(int16_t x, int16_t y){
-  drawBitmap(x, y, bombArray, 38, 31, BLACK);
+void drawBomb(){
+	if(myNunchuck.zButton == 1 && changeBomb == 0 && BombPlaced == 0) {
+  drawBitmap(curX1, curY1, bombBorderArray, 19, 19, WHITE);
+  drawBitmap(curX1, curY1, bombFillArray, 19, 19, GREY);
+  drawBitmap(curX1, curY1, bombFuseArray, 19, 19, ORANGE);
+  bombX1 = curX1;
+  bombY1 = curY1;
   
+  
+  drawSpookPlayer(curX1, curY1);
+  changeBomb = 1;
+  BombPlaced = 1;
+  }
+  
+  if(myNunchuck.zButton == 0) {
+	  changeBomb = 0;
+	    
+  }
+  
+}
+  
+void isBombPlaced() {
+	if(BombPlaced == 1) {
+		drawBitmap(bombX1, bombY1, bombBorderArray, 19, 19, WHITE);
+		drawBitmap(bombX1, bombY1, bombFillArray, 19, 19, GREY);
+		drawBitmap(bombX1, bombY1, bombFuseArray, 19, 19, ORANGE);
+		
+		drawSpookPlayer(curX1, curY1);
+	}
 }
 
 void frame(int16_t x, int16_t y){
@@ -351,37 +386,13 @@ void printPlacedBlocks(){
 }
 
 
-void newDrawRandomLevel(){  
-  //memset(placed,'0',sizeof(placed));
-  srand(analogRead(A0));
-  for(int i = 0; i <= 50; i++){
-    uint16_t random = rand() % (73 + 1);    
-    if(alreadyExistsInArray(random, placed)) {
-      i--;
-      } else {
-      placed[i] = random;     
-      uint16_t x1 = coordinates[random][0];
-      uint16_t y1 = coordinates[random][1];     
-      if(x1 >= 22 && y1 >= 31){
-        block(x1, y1);
-        
-      }
-    }
-  }
-  
-  //memset(placed,'0',sizeof(placed));
-  
-}
-
-
-
-
 void walkWithNunchuk(){
   myNunchuck.update(); // update the nunchuck data
   
   if ((analogXOld != myNunchuck.analogX || analogYOld != myNunchuck.analogY) && change == 0) { // if either the x or y coordinate has changed, we have to redraw the spookje
     analogXOld = myNunchuck.analogX; // update X value
-    analogYOld = myNunchuck.analogY; // update Y value              
+    analogYOld = myNunchuck.analogY; // update Y value
+	              
     if (myNunchuck.analogX>200){      
       moveRight();
       change = 1;
@@ -395,6 +406,7 @@ void walkWithNunchuk(){
       moveDown();
       change = 1;
     }           
+	isBombPlaced();
   }
   if (myNunchuck.analogX>100 && myNunchuck.analogX<140 && myNunchuck.analogY>110 && myNunchuck.analogY<150){    
     change = 0;   

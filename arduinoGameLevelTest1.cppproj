@@ -66,7 +66,7 @@
   </avrgcc.compiler.symbols.DefSymbols>
   <avrgcc.compiler.directories.IncludePaths>
     <ListValues>
-      <Value>../../../arduinoGame</Value>
+      <Value>../../../ArduinoGame</Value>
       <Value>C:/Users/niekd/Documents/Arduino/libraries/ArduinoNunchuk</Value>
       <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire/src</Value>
       <Value>C:/Users/niekd/Documents/Arduino/libraries/Adafruit-GFX-Library-master</Value>
@@ -106,7 +106,7 @@
   </avrgcccpp.compiler.symbols.DefSymbols>
   <avrgcccpp.compiler.directories.IncludePaths>
     <ListValues>
-      <Value>../../../arduinoGame</Value>
+      <Value>../../../ArduinoGame</Value>
       <Value>C:/Users/niekd/Documents/Arduino/libraries/ArduinoNunchuk</Value>
       <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire/src</Value>
       <Value>C:/Users/niekd/Documents/Arduino/libraries/Adafruit-GFX-Library-master</Value>
@@ -159,7 +159,7 @@
   </avrgcc.compiler.symbols.DefSymbols>
   <avrgcc.compiler.directories.IncludePaths>
     <ListValues>
-      <Value>../../../arduinoGame</Value>
+      <Value>../../../ArduinoGame</Value>
       <Value>C:/Users/niekd/Documents/Arduino/libraries/ArduinoNunchuk</Value>
       <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire/src</Value>
       <Value>C:/Users/niekd/Documents/Arduino/libraries/Adafruit-GFX-Library-master</Value>
@@ -199,7 +199,7 @@
   </avrgcccpp.compiler.symbols.DefSymbols>
   <avrgcccpp.compiler.directories.IncludePaths>
     <ListValues>
-      <Value>../../../arduinoGame</Value>
+      <Value>../../../ArduinoGame</Value>
       <Value>C:/Users/niekd/Documents/Arduino/libraries/ArduinoNunchuk</Value>
       <Value>C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/Wire/src</Value>
       <Value>C:/Users/niekd/Documents/Arduino/libraries/Adafruit-GFX-Library-master</Value>
