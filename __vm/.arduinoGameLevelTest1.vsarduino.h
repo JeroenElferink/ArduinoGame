@@ -26,7 +26,7 @@ void bomb(int16_t x, int16_t y);
 void frame(int16_t x, int16_t y);
 void block(int16_t x, int16_t y);
 void drawRandomLevel();
-bool alreadyExistsInArray(int val, int *arr);
+bool alreadyExistsInArray(uint8_t val, uint8_t *arr);
 void drawSpookPlayer(int16_t x, int16_t y);
 void undrawSpookPlayer(int16_t x, int16_t y);
 void moveRight();
