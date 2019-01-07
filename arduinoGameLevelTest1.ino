@@ -60,6 +60,8 @@ extern uint8_t bombFuseArray[];
 extern uint8_t fireInsideArray[];
 extern uint8_t fireMidArray[];
 extern uint8_t fireOutsideArray[];
+extern uint8_t heartFullArray[];
+extern uint8_t heartEmptyArray[];
 
 // this is an array in which the colornames are stored
 uint16_t colorArray[] = {BLACK, BLUE, RED, GREEN, CYAN, MAGENTA, YELLOW, WHITE, GREY};
@@ -98,6 +100,10 @@ int analogYOld; // old y value of the nunchuck
 int startX1 = 22;
 int startY1 = 31;
 
+int score1 = 0;
+int score2 = 0;
+int highscore;
+
 int startX2;
 int startY2;
 
@@ -106,6 +112,12 @@ int curY1 = startY1;
 
 int curX2 = startX2;
 int curY2 = startY2;
+
+// int lastX1 = 0;
+// int lastY1 = 0;
+//
+// int lastX2 = 0;
+// int lastY2 = 0;
 
 int newX1 = 0;
 int newY1 = 0;
@@ -139,6 +151,11 @@ int changeBomb = 0;
 int BombPlaced = 0;
 int firePlaced = 0;
 
+int fireCheck = 0;
+
+int hearts1 = 3;
+int hearts2 = 3;
+
 int numberOfBlocks = 50; // Number of blocks getting printed
 
 int interruptCounterBomb = 0;
@@ -170,9 +187,15 @@ int16_t main (void){
 	
 	drawRandomLevel();
 	
+	updateScore();
+	
 	drawSpookPlayer(startX1, startY1);
 	
-	printPlacedBlocks();
+	updateHearts();
+	
+	insertPlayerNumbers();
+	
+	//printPlacedBlocks();
 	
 	while(1){
 		
@@ -255,6 +278,23 @@ void isBombPlaced() {
 		drawSpookPlayer(curX1, curY1);
 	}
 }
+
+// void isFirePlaced() {
+// 	if(firePlaced == 1) {
+// 		for(int i = 0; i <= 4; i++){
+//
+// 			if(firePositions[i][0] == curX1 && firePositions[i][1] == curY1) {
+// 				drawBitmap(curX1, curY1, fireInsideArray, 19, 19, YELLOW);
+// 				drawBitmap(curX1, curY1, fireMidArray, 19, 19, ORANGE);
+// 				drawBitmap(curX1, curY1, fireOutsideArray, 19, 19, RED);
+//
+// 				//drawSpookPlayer(curX1, curY1);
+// 			}
+//
+// 		}
+//
+// 	}
+// }
 
 void frame(int16_t x, int16_t y){
 	drawBitmap(x, y, frameArray, 273, 240, GREY);
@@ -421,6 +461,33 @@ int wallCheck(){
 	return 1;
 }
 
+int borderCheckFireY(int Y){ //Checks if fire doesn't go through the border
+	if(Y < 31 || Y > 199){
+		return 0;
+		} else{
+		return 1;
+	}
+}
+
+int borderCheckFireX(int X){ //Checks if fire doesn't go through the border
+	if(X < 22 || X > 232){
+		return 0;
+		} else{
+		return 1;
+	}
+}
+
+int wallCheckFire(int X, int Y){ //Checks if fire doesn't go through indestructible blocks
+	for (int i=0; i<20; i++){
+		int x = undesBlockPositions[i][0];
+		int y = undesBlockPositions[i][1];
+		if(X == x && Y == y){
+			return 0;
+		}
+	}
+	return 1;
+}
+
 
 
 
@@ -446,18 +513,26 @@ void walkWithNunchuk(){
 			moveRight();
 			change = 1;
 			isBombPlaced();
-			}else if (myNunchuck.analogX<40){
+			walksInFire();
+			
+			}else if (myNunchuck.analogX<50){
 			moveLeft();
 			change = 1;
 			isBombPlaced();
+			walksInFire();
+			
 			}else if (myNunchuck.analogY>200){
 			moveUp();
 			change = 1;
 			isBombPlaced();
+			walksInFire();
+			
 			}else if (myNunchuck.analogY<40){
 			moveDown();
 			change = 1;
 			isBombPlaced();
+			walksInFire();
+			
 		}
 		
 	}
@@ -468,6 +543,102 @@ void walkWithNunchuk(){
 	
 }
 
+void walksInFire() { //Bug: makes the top fire in row 7 dissapear and makes score go +1
+	if(firePlaced == 1) {
+		for(int i = 0; i <= 4; i++) {
+			if(newX1 == firePositions[i][0] && newY1 == firePositions[i][1]) {
+				hearts1--;
+				updateHearts();
+			}
+		}
+	}
+}
+
+
+void updateScore() {
+	tft.fillRect(285, 85, 22, 14, BACKGROUND);
+	
+	tft.setCursor(285, 85);
+	tft.setTextColor(WHITE);
+	tft.setTextSize(2);
+	tft.setTextWrap(false);
+	tft.print(score1);
+	
+	tft.fillRect(285, 153, 22, 14, BACKGROUND);
+	
+	tft.setCursor(285, 153);
+	tft.setTextColor(WHITE);
+	tft.setTextSize(2);
+	tft.setTextWrap(false);
+	tft.print(score2);
+}
+
+void updateHearts(){
+	if(hearts1 == 3){
+		drawBitmap(282, 15, heartFullArray, 19, 19, RED);
+		drawBitmap(282, 35, heartFullArray, 19, 19, RED);
+		drawBitmap(282, 55, heartFullArray, 19, 19, RED);
+	}
+	
+	if(hearts1 == 2){
+		drawBitmap(282, 15, heartFullArray, 19, 19, RED);
+		drawBitmap(282, 35, heartFullArray, 19, 19, RED);
+		
+		undrawBitmap(282, 55, heartFullArray, 19, 19, BACKGROUND);
+		drawBitmap(282, 55, heartEmptyArray, 19, 19, RED);
+	}
+	
+	if(hearts1 == 1){
+		drawBitmap(282, 15, heartFullArray, 19, 19, RED);
+		
+		undrawBitmap(282, 35, heartFullArray, 19, 19, BACKGROUND);
+		drawBitmap(282, 35, heartEmptyArray, 19, 19, RED);
+		
+		undrawBitmap(282, 55, heartFullArray, 19, 19, BACKGROUND);
+		drawBitmap(282, 55, heartEmptyArray, 19, 19, RED);
+		
+	}
+	
+	if(hearts1 == 0){
+		//Maak gameover scherm of ga terug naar homescreen etc. highscore van de gewonnen speler moet opgeslagen zijn
+	}
+	
+	if(hearts2 == 3){
+		drawBitmap(282, 175, heartFullArray, 19, 19, RED);
+		drawBitmap(282, 195, heartFullArray, 19, 19, RED);
+		drawBitmap(282, 215, heartFullArray, 19, 19, RED);
+	}
+	
+	if(hearts2 == 2){
+		drawBitmap(282, 175, heartFullArray, 19, 19, RED);
+		drawBitmap(282, 195, heartFullArray, 19, 19, RED);
+		drawBitmap(282, 215, heartEmptyArray, 19, 19, RED);
+	}
+	
+	if(hearts2 == 1){
+		drawBitmap(282, 175, heartFullArray, 19, 19, RED);
+		drawBitmap(282, 195, heartEmptyArray, 19, 19, RED);
+		drawBitmap(282, 215, heartEmptyArray, 19, 19, RED);
+	}
+	
+	if(hearts2 == 0){
+		//Maak gameover scherm of ga terug naar homescreen etc. highscore van de gewonnen speler moet opgeslagen zijn
+	}
+}
+
+void insertPlayerNumbers(){
+	tft.setCursor(285, 107);
+	tft.setTextColor(RED);
+	tft.setTextSize(2);
+	tft.setTextWrap(false);
+	tft.print("P1");
+	
+	tft.setCursor(285, 130);
+	tft.setTextColor(BLUE);
+	tft.setTextSize(2);
+	tft.setTextWrap(false);
+	tft.print("P2");
+}
 
 void testNunchuk(){
 	myNunchuck.update();
@@ -488,14 +659,14 @@ void testNunchuk(){
 }
 
 ISR(TIMER1_OVF_vect) {
-interruptCounterFire++;
+	interruptCounterFire++;
 
 	if(BombPlaced == 1) {
 		
 		interruptCounterBomb++;
 		
 		
-		if (interruptCounterBomb >= 750 ) { //250 interrupts ? 1 sec
+		if (interruptCounterBomb >= 500 ) { //250 interrupts ? 1 sec
 			interruptCounterBomb = 0;
 			interruptCounterFire = 0;
 			
@@ -520,14 +691,42 @@ interruptCounterFire++;
 			
 			firePositions[4][0] = bombX1;
 			firePositions[4][1] = bombY1 - 21;
-			 
-			for(int i = 0; i <=5; i++){
-				
-				drawBitmap(firePositions[i][0], firePositions[i][1], fireInsideArray, 19, 19,YELLOW);
-				drawBitmap(firePositions[i][0], firePositions[i][1], fireMidArray, 19, 19, ORANGE);
-				drawBitmap(firePositions[i][0], firePositions[i][1], fireOutsideArray, 19, 19, RED);
-			}
+			
+			
+			for(int x = 0; x <= 4; x++) {
+				for(int i = 0; i <= 50; i++) {
+					int fireCheck = placed[i];
 					
+					if(firePositions[x][0] == coordinates[fireCheck][0] && firePositions[x][1] == coordinates[fireCheck][1]) {
+						if(borderCheckFireX(firePositions[x][0]) && borderCheckFireY(firePositions[x][1]) && wallCheckFire(firePositions[x][0], firePositions[x][1])) {
+							undrawBitmap(coordinates[fireCheck][0], coordinates[fireCheck][1], blockArray, 19, 19, BACKGROUND);
+							coordinates[fireCheck][0] = 0;
+							coordinates[fireCheck][1] = 0;
+							score1++;
+							updateScore();
+							
+						}
+					}
+				}
+				
+				
+			}
+			
+			
+			for(int i = 0; i <=4; i++){
+				
+				if(borderCheckFireX(firePositions[i][0]) && borderCheckFireY(firePositions[i][1]) && wallCheckFire(firePositions[i][0], firePositions[i][1])) {
+					drawBitmap(firePositions[i][0], firePositions[i][1], fireInsideArray, 19, 19, YELLOW);
+					drawBitmap(firePositions[i][0], firePositions[i][1], fireMidArray, 19, 19, ORANGE);
+					drawBitmap(firePositions[i][0], firePositions[i][1], fireOutsideArray, 19, 19, RED);
+					
+					if(firePositions[i][0] == curX1 && firePositions[i][1] == curY1) {
+						hearts1 = hearts1 - 1;
+						updateHearts();
+					}
+				}
+				
+			}
 			firePlaced = 1;
 			changeBomb = 0;
 			BombPlaced = 0;
@@ -536,16 +735,21 @@ interruptCounterFire++;
 
 	}
 
-	if(firePlaced == 1 && interruptCounterFire >= 500){
+	if(firePlaced == 1 && interruptCounterFire >= 500){ //Undraw Fire
 		interruptCounterFire = 0;
 		
-		for(int i = 0; i <=5; i++){
+		for(int i = 0; i <=4; i++){
 			
-			undrawBitmap(firePositions[i][0], firePositions[i][1], fireInsideArray, 19, 19,YELLOW);
-			undrawBitmap(firePositions[i][0], firePositions[i][1], fireMidArray, 19, 19, ORANGE);
-			undrawBitmap(firePositions[i][0], firePositions[i][1], fireOutsideArray, 19, 19, RED);
+			if(borderCheckFireX(firePositions[i][0]) && borderCheckFireY(firePositions[i][1]) && wallCheckFire(firePositions[i][0], firePositions[i][1])) {
+				undrawBitmap(firePositions[i][0], firePositions[i][1], fireInsideArray, 19, 19, BACKGROUND);
+				undrawBitmap(firePositions[i][0], firePositions[i][1], fireMidArray, 19, 19, BACKGROUND);
+				undrawBitmap(firePositions[i][0], firePositions[i][1], fireOutsideArray, 19, 19, BACKGROUND);
+				
+				firePositions[i][0] = NULL;
+				firePositions[i][1] = NULL;
+			}
+			
 		}
-		
-		firePlaced = 0;
+		firePlaced = 0; //Set firePlaced to 0 so the fire gets undrew only when necessary
 	}
 }
