@@ -66,8 +66,11 @@ extern uint8_t heartEmptyArray[];
 // this is an array in which the colornames are stored
 uint16_t colorArray[] = {BLACK, BLUE, RED, GREEN, CYAN, MAGENTA, YELLOW, WHITE, GREY};
 
-uint16_t placed[50];
+// this is an array where the placed blocks will be in
+uint16_t placed[51];
 
+
+// this is an array where are the possible locations are for destructible blocks, there are 73 possible locations with each an X and Y value
 uint16_t coordinates[73][2] = {
 	{22,73}, {22,94}, {22,115}, {22,136}, {22,157}, {22,178}, {22,199},
 	{43,73}, {43,115}, {43,157}, {43,199},
@@ -82,6 +85,7 @@ uint16_t coordinates[73][2] = {
 	{232,31}, {232,52}, {232,73}, {232,94}, {232,115}, {232,136}, {232,157}
 };
 
+// this is an indestructable block array
 uint16_t undesBlockPositions[20][2] = {
 	{43,52}, {85,52}, {127,52}, {169,52}, {211,52},
 	{43,94}, {85,94}, {127,94}, {169,94}, {211,94},
@@ -89,6 +93,7 @@ uint16_t undesBlockPositions[20][2] = {
 	{43,178}, {85,178}, {127,178}, {169,178}, {211,178},
 };
 
+// this is an empty array to keep track of the fire locations
 uint16_t firePositions[5][2];
 
 
@@ -112,12 +117,6 @@ int curY1 = startY1;
 
 int curX2 = startX2;
 int curY2 = startY2;
-
-// int lastX1 = 0;
-// int lastY1 = 0;
-//
-// int lastX2 = 0;
-// int lastY2 = 0;
 
 int newX1 = 0;
 int newY1 = 0;
@@ -168,7 +167,7 @@ int16_t main (void){
 	tft.setRotation(1);
 	
 	
-	
+	cli();
 	TCCR1A = 0;
 	TCCR1B = 0;
 	TIMSK1 = 1;
@@ -177,38 +176,21 @@ int16_t main (void){
 	TIMSK1 |= (1<<TOIE1);
 	
 	TCNT1 = 0;
+	sei();
 	
 	Serial.begin(9600);
 	
-	
-	
-	redrawScreen();
-	frame(0, 0);
-	
-	drawRandomLevel();
-	
-	updateScore();
-	
-	drawSpookPlayer(startX1, startY1);
-	
-	updateHearts();
-	
-	insertPlayerNumbers();
-	
-	//printPlacedBlocks();
-	
 	while(1){
 		
-		walkWithNunchuk();
-		drawBomb();
-		
+		mainMenu();
+
 	}
 	
 }
 
 
 
-
+// function to draw the hex bitmaps
 void drawBitmap(int16_t x, int16_t y, const uint8_t *bitmap, int16_t w, int16_t h, uint16_t color) {
 	int16_t i, j, byteWidth = (w + 7) / 8;
 	uint8_t byte;
@@ -243,7 +225,7 @@ void redrawScreen(){
 	//tft.drawRect(0,0,319,240,WHITE);  // draw a white frame
 }
 
-
+// function which puts a bomb on the players current location
 void drawBomb(){
 	if(myNunchuck.zButton == 1 && changeBomb == 0 && BombPlaced == 0) {
 		drawBitmap(curX1, curY1, bombBorderArray, 19, 19, GREY);
@@ -269,6 +251,7 @@ void drawBomb(){
 	
 }
 
+// redraws the bomb if the player walks over it
 void isBombPlaced() {
 	if(BombPlaced == 1) {
 		drawBitmap(bombX1, bombY1, bombBorderArray, 19, 19, GREY);
@@ -296,16 +279,19 @@ void isBombPlaced() {
 // 	}
 // }
 
+// draws the outer blockframe
 void frame(int16_t x, int16_t y){
 	drawBitmap(x, y, frameArray, 273, 240, GREY);
 	
 }
 
+// function to draw a block which uses x and y coordinates as input
 void block(int16_t x, int16_t y){
 	drawBitmap(x, y, blockArray, 19, 19, BROWN);
 	
 }
 
+// draws a random level based on the random function using a random seed based on the random volt value of a pin
 void drawRandomLevel(){
 	uint16_t alreadyPlaced[73];
 	srand(analogRead(A0));
@@ -323,11 +309,11 @@ void drawRandomLevel(){
 			}
 		}
 	}
-	memset(alreadyPlaced,'0',sizeof(alreadyPlaced));
+	memset(&alreadyPlaced, 0 ,sizeof(alreadyPlaced));
 	
 }
 
-
+//checks if input value already exists in array
 bool alreadyExistsInArray(int val, int *arr){
 	int i;
 	for (i=0; i <= 73; i++) {
@@ -344,13 +330,13 @@ int prevDirection = 0;
 
 
 // new functions for walking and stuff
-void drawSpookPlayer(int16_t x, int16_t y){ // add direction to be undrawn
+void drawSpookPlayer(int16_t x, int16_t y) { // add direction to be undrawn
 	drawBitmap(x, y, spookBodyArray, 19, 19, RED);
 	drawBitmap(x, y, oogwitArray, 19, 19, WHITE);
-	if(newDirection == 1){
+	if(newDirection == 1) {
 		drawBitmap(x, y, ogenBovenArray, 19, 19, BLUE);
 		prevDirection = 1;
-		}else if(newDirection == 2 || newDirection == 0) {
+		} else if(newDirection == 2 || newDirection == 0) {
 		drawBitmap(x, y, ogenOnderArray, 19, 19, BLUE);
 		prevDirection = 2;
 		} else if(newDirection == 3) {
@@ -362,21 +348,23 @@ void drawSpookPlayer(int16_t x, int16_t y){ // add direction to be undrawn
 	}
 }
 
-void undrawSpookPlayer(int16_t x, int16_t y){ // add direction to be undrawn
+// undraws the player from old location
+void undrawSpookPlayer(int16_t x, int16_t y) { // add direction to be undrawn
 	undrawBitmap(x, y, spookBodyArray, 19, 19, BACKGROUND);
 	undrawBitmap(x, y, oogwitArray, 19, 19, BACKGROUND);
-	if(prevDirection == 1){
+	if(prevDirection == 1) {
 		undrawBitmap(x, y, ogenBovenArray, 19, 19, BACKGROUND);
-		}else if(prevDirection == 2) {
+		} else if(prevDirection == 2) {
 		undrawBitmap(x, y, ogenOnderArray, 19, 19, BACKGROUND);
-		}else if(prevDirection == 3) {
+		} else if(prevDirection == 3) {
 		undrawBitmap(x, y, ogenLinksArray, 19, 19, BACKGROUND);
-		}else if(prevDirection == 4) {
+		} else if(prevDirection == 4) {
 		undrawBitmap(x, y, ogenRechtsArray, 19, 19, BACKGROUND);
 	}
 }
 
 void moveRight(){
+	newDirection = 4;
 	newX1 = curX1 + 21;
 	newY1 = curY1;
 	if (borderCheckX() == 1 && wallCheck() == 1 && blockCheck() == 1){
@@ -384,10 +372,11 @@ void moveRight(){
 		drawSpookPlayer(newX1, curY1);
 		curX1 = newX1;
 	}
-	newDirection = 4;
+	
 }
 
 void moveLeft(){
+	newDirection = 3;
 	newX1 = curX1 - 21;
 	newY1 = curY1;
 	if (borderCheckX() == 1 && wallCheck() == 1 && blockCheck() == 1){
@@ -395,10 +384,11 @@ void moveLeft(){
 		drawSpookPlayer(newX1, curY1);
 		curX1 = newX1;
 	}
-	newDirection = 3;
+	
 }
 
 void moveUp(){
+	newDirection = 1;
 	newX1 = curX1;
 	newY1 = curY1 - 21;
 	if (borderCheckY() == 1 && wallCheck() == 1 && blockCheck() == 1){
@@ -406,10 +396,11 @@ void moveUp(){
 		drawSpookPlayer(curX1, newY1);
 		curY1 = newY1;
 	}
-	newDirection = 1;
+	
 }
 
 void moveDown(){
+	newDirection = 2;
 	newX1 = curX1;
 	newY1 = curY1 + 21;
 	if (borderCheckY() == 1 && wallCheck() == 1 && blockCheck() == 1){
@@ -417,7 +408,7 @@ void moveDown(){
 		drawSpookPlayer(curX1, newY1);
 		curY1 = newY1;
 	}
-	newDirection = 2;
+	
 }
 
 
@@ -499,6 +490,7 @@ void printPlacedBlocks(){
 		Serial.print(",") ;
 		Serial.println(coordinates[number][1]);
 	}
+	Serial.println();
 }
 
 
@@ -599,9 +591,6 @@ void updateHearts(){
 		
 	}
 	
-	if(hearts1 == 0){
-		//Maak gameover scherm of ga terug naar homescreen etc. highscore van de gewonnen speler moet opgeslagen zijn
-	}
 	
 	if(hearts2 == 3){
 		drawBitmap(282, 175, heartFullArray, 19, 19, RED);
@@ -621,9 +610,6 @@ void updateHearts(){
 		drawBitmap(282, 215, heartEmptyArray, 19, 19, RED);
 	}
 	
-	if(hearts2 == 0){
-		//Maak gameover scherm of ga terug naar homescreen etc. highscore van de gewonnen speler moet opgeslagen zijn
-	}
 }
 
 void insertPlayerNumbers(){
@@ -638,6 +624,169 @@ void insertPlayerNumbers(){
 	tft.setTextSize(2);
 	tft.setTextWrap(false);
 	tft.print("P2");
+}
+
+void endOfGame() {
+	if(0) {
+		firePlaced = 0; //Make firePlaced 0 so it doesnt undraw fire over the endscreen
+		
+		tft.fillRect(0, 0, 320, 240, BACKGROUND);
+		
+		tft.setCursor(80, 80);
+		tft.setTextColor(GREEN);
+		tft.setTextSize(4);
+		tft.setTextWrap(false);
+		tft.print("YOU WIN!");
+		
+		tft.setCursor(77, 110);
+		tft.setTextColor(WHITE);
+		tft.setTextSize(1);
+		tft.setTextWrap(true);
+		tft.print("Press C to go back to main menu");
+		
+		while(1) {
+			
+			myNunchuck.update();
+			
+			if(myNunchuck.cButton == 1) {
+				mainMenu();
+			}
+		}
+		
+	}
+	
+	if(hearts1 == 0) {
+		firePlaced = 0;
+		
+		tft.fillRect(0, 0, 320, 240, BACKGROUND);
+		
+		tft.setCursor(65, 80);
+		tft.setTextColor(RED);
+		tft.setTextSize(4);
+		tft.setTextWrap(false);
+		tft.print("YOU LOSE!");
+		
+		tft.setCursor(77, 130);
+		tft.setTextColor(WHITE);
+		tft.setTextSize(1);
+		tft.setTextWrap(true);
+		tft.print("Press C to go back to main menu");
+		
+		while(1) {
+			
+			myNunchuck.update();
+			
+			if(myNunchuck.cButton == 1) {
+				resetVariables();
+				mainMenu();
+			}
+		}
+	}
+}
+
+void mainMenu() {
+	tft.fillRect(0, 0, 320, 240, BLACK);
+	
+	tft.setCursor(20, 10);
+	tft.setTextColor(WHITE);
+	tft.setTextSize(4);
+	tft.setTextWrap(false);
+	tft.print("BOMBERSPOOKS");
+	
+	tft.setCursor(20, 70);
+	tft.setTextColor(RED);
+	tft.setTextSize(1);
+	tft.setTextWrap(false);
+	tft.print("Player 1");
+	
+	drawSpookPlayer(28, 90);
+	
+	tft.setCursor(250, 70);
+	tft.setTextColor(BLUE);
+	tft.setTextSize(1);
+	tft.setTextWrap(false);
+	tft.print("Player 2");
+	
+	drawSpookPlayer(260, 90);
+	
+	tft.setCursor(100, 70);
+	tft.setTextColor(WHITE);
+	tft.setTextSize(2);
+	tft.setTextWrap(false);
+	tft.print("Press C to");
+	
+	tft.setCursor(100, 90);
+	tft.setTextColor(WHITE);
+	tft.setTextSize(2);
+	tft.setTextWrap(false);
+	tft.print("start game");
+	
+	tft.setCursor(80, 160);
+	tft.setTextColor(WHITE);
+	tft.setTextSize(2);
+	tft.setTextWrap(false);
+	tft.print("High score:");
+	
+	tft.setCursor(213, 160);
+	tft.setTextColor(WHITE);
+	tft.setTextSize(2);
+	tft.setTextWrap(false);
+	tft.print(highscore);
+	
+	while(1) {
+		myNunchuck.update();
+		
+		if(myNunchuck.cButton == 1) {
+			
+			redrawScreen();
+			frame(0, 0);
+			
+			drawRandomLevel();
+			
+			updateScore();
+			
+			drawSpookPlayer(startX1, startY1);
+			
+			updateHearts();
+			
+			insertPlayerNumbers();
+			
+			printPlacedBlocks();
+			
+			while(1) {
+				
+				walkWithNunchuk();
+				drawBomb();
+				endOfGame();
+			}
+		}
+	}
+}
+
+void resetVariables() {
+	memset(&placed[50], 0, sizeof(placed));
+	memset(&coordinates[73][2], 0, sizeof(coordinates));
+	
+	
+	score1 = 0;
+	score2 = 0;
+	
+	curX1 = startX1;
+	curY1 = startY1;
+
+	curX2 = startX2;
+	curY2 = startY2;
+
+	newX1 = 0;
+	newY1 = 0;
+
+	newX2 = 0;
+	newY2 = 0;
+	
+	hearts1 = 3;
+	hearts2 = 3;
+	
+	
 }
 
 void testNunchuk(){
@@ -694,7 +843,7 @@ ISR(TIMER1_OVF_vect) {
 			
 			
 			for(int x = 0; x <= 4; x++) {
-				for(int i = 0; i <= 50; i++) {
+				for(int i = 0; i <= 51; i++) {
 					int fireCheck = placed[i];
 					
 					if(firePositions[x][0] == coordinates[fireCheck][0] && firePositions[x][1] == coordinates[fireCheck][1]) {
@@ -744,6 +893,8 @@ ISR(TIMER1_OVF_vect) {
 				undrawBitmap(firePositions[i][0], firePositions[i][1], fireInsideArray, 19, 19, BACKGROUND);
 				undrawBitmap(firePositions[i][0], firePositions[i][1], fireMidArray, 19, 19, BACKGROUND);
 				undrawBitmap(firePositions[i][0], firePositions[i][1], fireOutsideArray, 19, 19, BACKGROUND);
+				
+				drawSpookPlayer(curX1, curY1);
 				
 				firePositions[i][0] = NULL;
 				firePositions[i][1] = NULL;
