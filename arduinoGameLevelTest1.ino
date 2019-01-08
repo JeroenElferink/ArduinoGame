@@ -7,6 +7,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include <avr/interrupt.h>
+#include <EEPROM.h>
 
 
 // define SPI pins
@@ -107,7 +108,7 @@ int startY1 = 31;
 
 int score1 = 0;
 int score2 = 0;
-int highscore;
+int highscore = EEPROM.read(0); 
 
 int startX2;
 int startY2;
@@ -179,6 +180,7 @@ int16_t main (void){
 	sei();
 	
 	Serial.begin(9600);
+	
 	
 	while(1){
 		
@@ -644,6 +646,14 @@ void endOfGame() {
 		tft.setTextWrap(true);
 		tft.print("Press C to go back to main menu");
 		
+// 		if(speler.score > highscore){
+// 			EEPROM.write(0, speler.score)
+//			highscore = speler.score;
+//
+// 		}
+		
+		
+		
 		while(1) {
 			
 			myNunchuck.update();
@@ -672,6 +682,10 @@ void endOfGame() {
 		tft.setTextWrap(true);
 		tft.print("Press C to go back to main menu");
 		
+//		used for testing high score
+// 		EEPROM.write(0, score1);
+// 		highscore = score1;
+
 		while(1) {
 			
 			myNunchuck.update();
@@ -751,10 +765,10 @@ void mainMenu() {
 			
 			insertPlayerNumbers();
 			
-			printPlacedBlocks();
+//			printPlacedBlocks();
 			
 			while(1) {
-				
+				Serial.println(analogRead(A0));
 				walkWithNunchuk();
 				drawBomb();
 				endOfGame();
